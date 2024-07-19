@@ -10,7 +10,7 @@ namespace Microsoft.Extensions.DependencyInjection;
 
 public static class ServiceCollectionExtensions
 {
-	public static IServiceCollection AddGameInterfaceCQ9GamingClient(
+	public static IServiceCollection AddGameInterfaceMicroGamingClient(
 		this IServiceCollection services,
 		Action<GameInterfaceMicroGamingClientOptions, IServiceProvider> configure)
 	{

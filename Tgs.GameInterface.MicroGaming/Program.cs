@@ -5,6 +5,7 @@ using OpenTelemetry.Metrics;
 using OpenTelemetry.Resources;
 using OpenTelemetry.Trace;
 using Tgs.GameInterface.MicroGaming;
+using Tgs.GameInterface.MicroGaming.Core;
 using Tgs.GameInterface.MicroGaming.GrpcServices;
 
 var filterInstrumentations = new[] { "html", "ico", "png", "jpg" };
@@ -50,12 +51,16 @@ builder.Services.AddGrpc(options =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 
-builder.Services.AddGameInterfaceCore(
-	redisConfigure: (options, sp) =>
+builder.Services
+	.AddOptions<RedisOptions>()
+	.Configure((RedisOptions options, IServiceProvider sp) =>
 	{
 		var configuration = sp.GetRequiredService<IConfiguration>();
 		options.ConnectionString = configuration.GetConnectionString("Redis")!;
-	});
+	})
+	.Services
+	.AddSingleton<IRedisConnectionFactory, RedisConnectionFactory>()
+	.AddGameInterfaceCore();
 
 builder.Services
 	.AddOpenTelemetry()

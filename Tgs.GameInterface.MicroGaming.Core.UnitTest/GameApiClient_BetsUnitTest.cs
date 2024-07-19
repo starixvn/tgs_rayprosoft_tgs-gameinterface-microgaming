@@ -69,8 +69,12 @@ public class GameApiClient_BetsUnitTest
 				clientSecret: clientSecret,
 				cancellationToken: default)
 			.Returns("01J2X8HBTR42XAH5NAPTRSDPHQ");
+		var fakerDateTimeConverter = Substitute.For<IDateTimeConverter>();
+		fakerDateTimeConverter
+			.StringConvertToDatetime(Arg.Any<string>())
+			.Returns(str => DateTime.TryParse((string)str[0], out var date) ? new(date, TimeSpan.Zero) : DateTimeOffset.UnixEpoch);
 		var fakerLogger = NullLogger<GameApiClient>.Instance;
-		var sut = new GameApiClient(fakerLogger, fakerTokenRepo, fakerHttpClient);
+		var sut = new GameApiClient(fakerLogger, fakerTokenRepo, fakerDateTimeConverter, fakerHttpClient);
 
 		// Act
 		var results = sut.BetsAsync(

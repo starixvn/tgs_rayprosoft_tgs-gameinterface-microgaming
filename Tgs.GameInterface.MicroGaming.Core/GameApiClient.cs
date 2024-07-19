@@ -14,10 +14,9 @@ namespace Tgs.GameInterface.MicroGaming.Core;
 internal class GameApiClient(
 	ILogger<GameApiClient> logger,
 	IStsTokenRepository tokenRepository,
+	IDateTimeConverter dateTimeConverter,
 	HttpClient httpClient) : IGameApiClient
 {
-	private readonly DateTimeConverter _dateTimeConverter = new();
-
 	public async ValueTask PlayersAsync(Uri stsApiBaseUrl, string clientId, string clientSecret, Uri apiBaseUrl, string agentCode, string playerId, CancellationToken cancellationToken = default)
 	{
 		var token = await tokenRepository.GetTokenAsync(stsApiBaseUrl, clientId, clientSecret, cancellationToken).ConfigureAwait(false);
@@ -121,9 +120,9 @@ internal class GameApiClient(
 			if (jsonObj is null)
 				continue;
 
-			var createdDateUtc = _dateTimeConverter.StringConvertToDatetime(jsonObj["createdDateUTC"]!.GetValue<string>()!);
-			var gameStartTimeUtc = _dateTimeConverter.StringConvertToDatetime(jsonObj["gameStartTimeUTC"]!.GetValue<string>()!);
-			var gameEndTimeUtc = _dateTimeConverter.StringConvertToDatetime(jsonObj["gameEndTimeUTC"]!.GetValue<string>()!);
+			var createdDateUtc = dateTimeConverter.StringConvertToDatetime(jsonObj["createdDateUTC"]!.GetValue<string>()!);
+			var gameStartTimeUtc = dateTimeConverter.StringConvertToDatetime(jsonObj["gameStartTimeUTC"]!.GetValue<string>()!);
+			var gameEndTimeUtc = dateTimeConverter.StringConvertToDatetime(jsonObj["gameEndTimeUTC"]!.GetValue<string>()!);
 			yield return new BetsResponseItem(
 				BetUid: jsonObj["betUID"]!.GetValue<string>()!,
 				CreatedDateUtc: createdDateUtc,

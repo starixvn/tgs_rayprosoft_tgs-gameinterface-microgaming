@@ -1,4 +1,4 @@
-﻿namespace Tgs.GameInterface.MicroGaming.Core;
+﻿namespace Tgs.GameInterface.MicroGaming;
 
 public class RedisOptions
 {

@@ -58,8 +58,9 @@ public class GameApiClient_PlayersDetailsUnitTest
 				clientSecret: clientSecret,
 				cancellationToken: default)
 			.Returns("01J2X8HBTR42XAH5NAPTRSDPHQ");
+		var fakerDateTimeConverter = Substitute.For<IDateTimeConverter>();
 		var fakerLogger = NullLogger<GameApiClient>.Instance;
-		var sut = new GameApiClient(fakerLogger, fakerTokenRepo, fakerHttpClient);
+		var sut = new GameApiClient(fakerLogger, fakerTokenRepo, fakerDateTimeConverter, fakerHttpClient);
 
 		// Act
 		var actual = await sut
@@ -107,8 +108,9 @@ public class GameApiClient_PlayersDetailsUnitTest
 				clientSecret: clientSecret,
 				cancellationToken: default)
 			.Returns("01J2X8HBTR42XAH5NAPTRSDPHQ");
+		var fakerDateTimeConverter = Substitute.For<IDateTimeConverter>();
 		var fakerLogger = NullLogger<GameApiClient>.Instance;
-		var sut = new GameApiClient(fakerLogger, fakerTokenRepo, fakerHttpClient);
+		var sut = new GameApiClient(fakerLogger, fakerTokenRepo, fakerDateTimeConverter, fakerHttpClient);
 
 		// Act
 		var actual = await sut

@@ -1,9 +1,10 @@
 ﻿using Microsoft.Extensions.Options;
 using StackExchange.Redis;
+using Tgs.GameInterface.MicroGaming.Core;
 
-namespace Tgs.GameInterface.MicroGaming.Core;
+namespace Tgs.GameInterface.MicroGaming;
 
-internal class RedisConnectionFactory : IDisposable
+internal class RedisConnectionFactory : IDisposable, IRedisConnectionFactory
 {
 	private readonly ConnectionMultiplexer _connectionMultiplexer;
 	private bool _disposedValue;
