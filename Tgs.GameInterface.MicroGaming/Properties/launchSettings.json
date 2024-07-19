@@ -6,7 +6,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "OTEL_SERVICE_NAME": "Game-GameInterface-MicroGaming(local)",
+        "OTEL_SERVICE_NAME": "Game-GameInterface-MG(local)",
         "NODE_IP": "otel.rpgp.cc",
         "RELEASE_NAMESPACE": "dev",
         "POD_IP": "127.0.0.1"
@@ -20,7 +20,7 @@
       "launchUrl": "swagger",
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development",
-        "OTEL_SERVICE_NAME": "Game-GameInterface-MicroGaming(local)",
+        "OTEL_SERVICE_NAME": "Game-GameInterface-MG(local)",
         "NODE_IP": "otel.rpgp.cc",
         "RELEASE_NAMESPACE": "dev",
         "POD_IP": "127.0.0.1"
