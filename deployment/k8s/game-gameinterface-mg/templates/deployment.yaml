@@ -1,16 +1,16 @@
 ﻿apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: {{ include "game-gameinterface-microgaming.fullname" . }}
+  name: {{ include "game-gameinterface-mg.fullname" . }}
   labels:
-    {{- include "game-gameinterface-microgaming.labels" . | nindent 4 }}
+    {{- include "game-gameinterface-mg.labels" . | nindent 4 }}
 spec:
   {{- if not .Values.autoscaling.enabled }}
   replicas: {{ .Values.replicaCount }}
   {{- end }}
   selector:
     matchLabels:
-      {{- include "game-gameinterface-microgaming.selectorLabels" . | nindent 6 }}
+      {{- include "game-gameinterface-mg.selectorLabels" . | nindent 6 }}
   template:
     metadata:
       {{- with .Values.podAnnotations }}
@@ -18,7 +18,7 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
       labels:
-        {{- include "game-gameinterface-microgaming.labels" . | nindent 8 }}
+        {{- include "game-gameinterface-mg.labels" . | nindent 8 }}
 	{{- with .Values.podLabels }}
         {{- toYaml . | nindent 8 }}
         {{- end }}
@@ -27,7 +27,7 @@ spec:
       imagePullSecrets:
         {{- toYaml . | nindent 8 }}
       {{- end }}
-      serviceAccountName: {{ include "game-gameinterface-microgaming.serviceAccountName" . }}
+      serviceAccountName: {{ include "game-gameinterface-mg.serviceAccountName" . }}
       securityContext:
         {{- toYaml .Values.podSecurityContext | nindent 8 }}
       containers:
@@ -121,7 +121,7 @@ spec:
       volumes:
         - name: appsettings
           configMap:
-            name: configmap-{{ include "game-gameinterface-microgaming.fullname" . }}
+            name: configmap-{{ include "game-gameinterface-mg.fullname" . }}
       {{- with .Values.nodeSelector }}
       nodeSelector:
         {{- toYaml . | nindent 8 }}

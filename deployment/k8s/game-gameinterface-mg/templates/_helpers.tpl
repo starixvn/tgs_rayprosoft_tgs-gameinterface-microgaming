@@ -1,7 +1,7 @@
 {{/*
 Expand the name of the chart.
 */}}
-{{- define "game-gameinterface-microgaming.name" -}}
+{{- define "game-gameinterface-mg.name" -}}
 {{- default .Chart.Name .Values.nameOverride | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
@@ -10,7 +10,7 @@ Create a default fully qualified app name.
 We truncate at 63 chars because some Kubernetes name fields are limited to this (by the DNS naming spec).
 If release name contains chart name it will be used as a full name.
 */}}
-{{- define "game-gameinterface-microgaming.fullname" -}}
+{{- define "game-gameinterface-mg.fullname" -}}
 {{- if .Values.fullnameOverride }}
 {{- .Values.fullnameOverride | trunc 63 | trimSuffix "-" }}
 {{- else }}
@@ -26,16 +26,16 @@ If release name contains chart name it will be used as a full name.
 {{/*
 Create chart name and version as used by the chart label.
 */}}
-{{- define "game-gameinterface-microgaming.chart" -}}
+{{- define "game-gameinterface-mg.chart" -}}
 {{- printf "%s-%s" .Chart.Name .Chart.Version | replace "+" "_" | trunc 63 | trimSuffix "-" }}
 {{- end }}
 
 {{/*
 Common labels
 */}}
-{{- define "game-gameinterface-microgaming.labels" -}}
-helm.sh/chart: {{ include "game-gameinterface-microgaming.chart" . }}
-{{ include "game-gameinterface-microgaming.selectorLabels" . }}
+{{- define "game-gameinterface-mg.labels" -}}
+helm.sh/chart: {{ include "game-gameinterface-mg.chart" . }}
+{{ include "game-gameinterface-mg.selectorLabels" . }}
 {{- if .Chart.AppVersion }}
 app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
 {{- end }}
@@ -45,10 +45,10 @@ app.kubernetes.io/managed-by: {{ .Release.Service }}
 {{/*
 Selector labels
 */}}
-{{- define "game-gameinterface-microgaming.selectorLabels" -}}
-app.kubernetes.io/name: {{ include "game-gameinterface-microgaming.name" . }}
+{{- define "game-gameinterface-mg.selectorLabels" -}}
+app.kubernetes.io/name: {{ include "game-gameinterface-mg.name" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
-app: {{ include "game-gameinterface-microgaming.name" . }}
+app: {{ include "game-gameinterface-mg.name" . }}
 tgs.kind: game
 tgs.game.kind: gameinterface
 tgs.gameprovider.kind: microgaming
@@ -57,9 +57,9 @@ tgs.gameprovider.kind: microgaming
 {{/*
 Create the name of the service account to use
 */}}
-{{- define "game-gameinterface-microgaming.serviceAccountName" -}}
+{{- define "game-gameinterface-mg.serviceAccountName" -}}
 {{- if .Values.serviceAccount.create }}
-{{- default (include "game-gameinterface-microgaming.fullname" .) .Values.serviceAccount.name }}
+{{- default (include "game-gameinterface-mg.fullname" .) .Values.serviceAccount.name }}
 {{- else }}
 {{- default "default" .Values.serviceAccount.name }}
 {{- end }}

@@ -2,14 +2,14 @@
 apiVersion: autoscaling/v2
 kind: HorizontalPodAutoscaler
 metadata:
-  name: {{ include "game-gameinterface-microgaming.fullname" . }}
+  name: {{ include "game-gameinterface-mg.fullname" . }}
   labels:
-    {{- include "game-gameinterface-microgaming.labels" . | nindent 4 }}
+    {{- include "game-gameinterface-mg.labels" . | nindent 4 }}
 spec:
   scaleTargetRef:
     apiVersion: apps/v1
     kind: Deployment
-    name: {{ include "game-gameinterface-microgaming.fullname" . }}
+    name: {{ include "game-gameinterface-mg.fullname" . }}
   minReplicas: {{ .Values.autoscaling.minReplicas }}
   maxReplicas: {{ .Values.autoscaling.maxReplicas }}
   metrics:
