@@ -1,0 +1,135 @@
+syntax = "proto3";
+
+import "phoenix/protobuf/decimal.proto";
+import "google/protobuf/timestamp.proto";
+
+option csharp_namespace = "Tgs.GameInterface.MicroGaming.Protos";
+
+package GameInterfaceMicroGaming;
+
+service GameInterfaceMicroGaming {
+	rpc CheckingService(CheckingServiceRequest) returns (CheckingServiceReply);
+	rpc PlayerCreate (PlayerCreateRequest) returns (BaseReply);
+	rpc PlayerBalance (PlayerBalanceRequest) returns (PlayerBalanceReply);
+	rpc GameUrl (GameUrlRequest) returns (GameUrlReply);
+	rpc GameRecord (GameRecordRequest) returns (stream GameRecordInfo);
+	rpc FundOut(FundRequest) returns (FundReply);
+	rpc FundIn (FundRequest) returns (FundReply);
+	rpc FundStatus(FundStatusRequest) returns (BaseReply);
+}
+
+message CheckingServiceRequest{
+	string machine_name = 1;
+}
+
+message PlayerCreateRequest {
+	string sts_api_base_url = 1;
+	string client_id = 2;
+	string client_secret = 3;
+	string api_base_url = 4;
+	string agent_code = 5;
+
+	string player_code = 6;
+}
+
+message PlayerBalanceRequest {
+	string sts_api_base_url = 1;
+	string client_id = 2;
+	string client_secret = 3;
+	string api_base_url = 4;
+	string agent_code = 5;
+
+	string player_code = 6;
+}
+
+message GameUrlRequest {
+	string sts_api_base_url = 1;
+	string client_id = 2;
+	string client_secret = 3;
+	string api_base_url = 4;
+	string agent_code = 5;
+
+	string player_code = 6;
+	string language = 7;
+	GamePlatform platform = 8;
+	string game_code = 9;
+}
+
+message GameRecordRequest {
+	string sts_api_base_url = 1;
+	string client_id = 2;
+	string client_secret = 3;
+	string api_base_url = 4;
+	string agent_code = 5;
+
+	int32 limit = 6;
+	string startting_after = 7;
+}
+
+message FundRequest {
+	string sts_api_base_url = 1;
+	string client_id = 2;
+	string client_secret = 3;
+	string api_base_url = 4;
+	string agent_code = 5;
+
+	string player_code = 6;
+	phoenix.protobuf.DecimalValue amount = 7;
+	string order_id = 8;
+}
+
+message FundStatusRequest {
+	string sts_api_base_url = 1;
+	string client_id = 2;
+	string client_secret = 3;
+	string api_base_url = 4;
+	string agent_code = 5;
+
+	string external_order_id = 6;
+}
+
+message BaseReply {
+	bool status = 1;
+}
+
+message PlayerBalanceReply {
+	bool is_player_exist = 1;
+	phoenix.protobuf.DecimalValue balance = 2;
+}
+
+message GameUrlReply {
+	string game_url = 1;
+}
+
+message GameRecordInfo {
+	string player_code = 1;
+	string external_bet_id = 2;
+	string external_game_id = 3;
+	google.protobuf.Timestamp ExternalCreatedOn = 4;
+	google.protobuf.Timestamp ExternalClosedOn = 5;
+	BetStatus bet_status = 6;
+	phoenix.protobuf.DecimalValue Bet = 7;
+	phoenix.protobuf.DecimalValue Jackpot = 8;
+	string AdditionalData = 9;
+}
+
+message FundReply {
+	string order_id = 1;
+	string external_order_id = 2;
+	string resp = 3;
+}
+
+message CheckingServiceReply{
+	string machine_name = 1;
+}
+
+enum GamePlatform {
+	UNKNOWN = 0;
+	DESKTOP = 1;
+	MOBILE = 2;
+}
+
+enum BetStatus {
+	Closed = 0;
+	Cancelled = 1;
+}
