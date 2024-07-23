@@ -51,7 +51,7 @@ app.kubernetes.io/instance: {{ .Release.Name }}
 app: {{ include "game-gameinterface-mg.name" . }}
 tgs.kind: game
 tgs.game.kind: gameinterface
-tgs.gameprovider.kind: microgaming
+tgs.gameprovider.kind: mg
 {{- end }}
 
 {{/*
