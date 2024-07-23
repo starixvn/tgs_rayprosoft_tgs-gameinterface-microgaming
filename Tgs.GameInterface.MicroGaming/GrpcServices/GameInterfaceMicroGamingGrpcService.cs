@@ -145,6 +145,8 @@ public class GameInterfaceMicroGamingGrpcService(
 						_ => BetStatus.Closed,
 					},
 					Bet = record.Bet,
+					Settle = record.Settle,
+					WinLoss = record.WinLoss,
 					Jackpot = record.Jackpot,
 					AdditionalData = record.AdditionalData
 				})

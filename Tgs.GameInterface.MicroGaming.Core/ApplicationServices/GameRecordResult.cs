@@ -8,5 +8,7 @@ public record class GameRecordResult(
 	DateTimeOffset ExternalClosedOn,
 	BetStatus BetStatus,
 	decimal Bet,
+	decimal Settle,
+	decimal WinLoss,
 	decimal Jackpot,
 	string AdditionalData);

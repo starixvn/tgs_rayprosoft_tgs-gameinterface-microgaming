@@ -34,6 +34,8 @@ public class GameRecordUnitTest
 			ExternalClosedOn: new DateTimeOffset(2024, 07, 18, 10, 15, 00, TimeSpan.Zero),
 			BetStatus: Core.BetStatus.Closed,
 			Bet: 16m,
+			Settle: 32m,
+			WinLoss: -16m,
 			Jackpot: 0m,
 			AdditionalData: "01J31SHKFTHECRD65AVK89ZQ45");
 		var fakerService = Substitute.For<IQueryService<GameRecordBetLogQuery, GameRecordResult>>();
@@ -71,6 +73,8 @@ public class GameRecordUnitTest
 			Assert.NotNull(actual);
 			Assert.Equal("4ucmqplxb029", actual.PlayerCode);
 			Assert.Equal(16m, actual.Bet.ToDecimal());
+			Assert.Equal(32m, actual.Settle.ToDecimal());
+			Assert.Equal(-16m, actual.WinLoss.ToDecimal());
 			Assert.Equal(0m, actual.Jackpot.ToDecimal());
 			Assert.Equal(new DateTimeOffset(2024, 07, 18, 10, 12, 00, TimeSpan.Zero), actual.ExternalCreatedOn.ToDateTimeOffset());
 			Assert.Equal(new DateTimeOffset(2024, 07, 18, 10, 15, 00, TimeSpan.Zero), actual.ExternalClosedOn.ToDateTimeOffset());

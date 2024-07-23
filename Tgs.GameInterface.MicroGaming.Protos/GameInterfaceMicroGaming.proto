@@ -105,12 +105,14 @@ message GameRecordInfo {
 	string player_code = 1;
 	string external_bet_id = 2;
 	string external_game_id = 3;
-	google.protobuf.Timestamp ExternalCreatedOn = 4;
-	google.protobuf.Timestamp ExternalClosedOn = 5;
+	google.protobuf.Timestamp external_created_on = 4;
+	google.protobuf.Timestamp external_closed_on = 5;
 	BetStatus bet_status = 6;
-	phoenix.protobuf.DecimalValue Bet = 7;
-	phoenix.protobuf.DecimalValue Jackpot = 8;
-	string AdditionalData = 9;
+	phoenix.protobuf.DecimalValue bet = 7;
+	phoenix.protobuf.DecimalValue settle = 8;
+	phoenix.protobuf.DecimalValue win_loss = 9;
+	phoenix.protobuf.DecimalValue jackpot = 10;
+	string additional_data = 11;
 }
 
 message FundReply {
@@ -130,6 +132,6 @@ enum GamePlatform {
 }
 
 enum BetStatus {
-	Closed = 0;
-	Cancelled = 1;
+	CLOSED = 0;
+	CANCELLED = 1;
 }
