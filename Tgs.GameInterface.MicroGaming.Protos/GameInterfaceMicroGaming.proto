@@ -125,12 +125,12 @@ message CheckingServiceReply{
 }
 
 enum GamePlatform {
-	UNKNOWN = 0;
-	DESKTOP = 1;
-	MOBILE = 2;
+	GAMEPLATFORM_UNKNOWN = 0;
+	GAMEPLATFORM_DESKTOP = 1;
+	GAMEPLATFORM_MOBILE = 2;
 }
 
 enum BetStatus {
-	CLOSED = 0;
-	CANCELLED = 1;
+	BETSTATUS_CLOSED = 0;
+	BETSTATUS_CANCELLED = 1;
 }
