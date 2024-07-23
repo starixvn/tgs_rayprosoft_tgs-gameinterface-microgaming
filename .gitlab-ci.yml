@@ -4,9 +4,9 @@ include:
     file: GitLab/Templates/gitlab-job-templates.yml
 
 variables:
-  ImageName: pgtgs/game-gameinterface-microgaming
-  TgsSettingKey: game-gameinterface-microgaming
-  HelmTemplateFolderName: game-gameinterface-microgaming
+  ImageName: pgtgs/game-gameinterface-mg
+  TgsSettingKey: game-gameinterface-mg
+  HelmTemplateFolderName: game-gameinterface-mg
   BuildCacheKey: Tgs.GameInterface.MicroGaming.$CI_PIPELINE_IID
 
 stages:
