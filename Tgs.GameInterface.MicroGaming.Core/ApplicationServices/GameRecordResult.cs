@@ -10,5 +10,4 @@ public record class GameRecordResult(
 	decimal Bet,
 	decimal Settle,
 	decimal WinLoss,
-	decimal Jackpot,
 	string AdditionalData);

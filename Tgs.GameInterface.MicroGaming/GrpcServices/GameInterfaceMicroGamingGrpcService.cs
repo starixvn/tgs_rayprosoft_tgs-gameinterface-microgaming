@@ -147,7 +147,6 @@ public class GameInterfaceMicroGamingGrpcService(
 					Bet = record.Bet,
 					Settle = record.Settle,
 					WinLoss = record.WinLoss,
-					Jackpot = record.Jackpot,
 					AdditionalData = record.AdditionalData
 				})
 				.ConfigureAwait(false);

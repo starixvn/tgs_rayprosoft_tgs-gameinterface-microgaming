@@ -56,7 +56,8 @@ public class GameRecordBetLogQueryServiceUnitTest
 			Assert.NotNull(actual);
 			Assert.Equal("4ucmqplxb029", actual.PlayerCode);
 			Assert.Equal(10m, actual.Bet);
-			Assert.Equal(0m, actual.Jackpot);
+			Assert.Equal(20m, actual.Settle);
+			Assert.Equal(-10m, actual.WinLoss);
 			Assert.Equal(new DateTimeOffset(2024, 07, 17, 17, 30, 00, TimeSpan.Zero), actual.ExternalCreatedOn);
 			Assert.Equal(new DateTimeOffset(2024, 07, 17, 17, 30, 30, TimeSpan.Zero), actual.ExternalClosedOn);
 			Assert.Equal("01J2ZP5RAB77CGDHWNFPFKDRRP", actual.ExternalBetId);

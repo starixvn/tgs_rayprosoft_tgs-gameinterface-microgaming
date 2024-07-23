@@ -20,7 +20,7 @@ internal class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQuerySe
 		await foreach (var responseItem in responseItems)
 		{
 			var bet = responseItem.BetAmount;
-			var jackpot = responseItem.PayoutAmount;
+			var payout = responseItem.PayoutAmount;
 			yield return new GameRecordResult(
 				PlayerCode: responseItem.PlayerId,
 				ExternalBetId: responseItem.BetUid,
@@ -29,9 +29,8 @@ internal class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQuerySe
 				ExternalClosedOn: responseItem.GameEndTimeUtc,
 				BetStatus: responseItem.BetStatus,
 				Bet: bet,
-				Settle: jackpot + bet + bet,
-				WinLoss: jackpot - bet,
-				Jackpot: jackpot,
+				Settle: payout + bet + bet,
+				WinLoss: payout - bet,
 				AdditionalData: responseItem.AdditionalData);
 		}
 	}

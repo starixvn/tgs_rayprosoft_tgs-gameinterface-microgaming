@@ -111,8 +111,7 @@ message GameRecordInfo {
 	phoenix.protobuf.DecimalValue bet = 7;
 	phoenix.protobuf.DecimalValue settle = 8;
 	phoenix.protobuf.DecimalValue win_loss = 9;
-	phoenix.protobuf.DecimalValue jackpot = 10;
-	string additional_data = 11;
+	string additional_data = 10;
 }
 
 message FundReply {
