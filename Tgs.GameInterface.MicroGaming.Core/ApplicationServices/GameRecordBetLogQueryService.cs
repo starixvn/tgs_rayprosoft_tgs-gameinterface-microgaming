@@ -29,7 +29,7 @@ internal class GameRecordBetLogQueryService(IGameApiClient apiClient) : IQuerySe
 				ExternalClosedOn: responseItem.GameEndTimeUtc,
 				BetStatus: responseItem.BetStatus,
 				Bet: bet,
-				Settle: payout + bet + bet,
+				Settle: payout,
 				WinLoss: payout - bet,
 				AdditionalData: responseItem.AdditionalData);
 		}
