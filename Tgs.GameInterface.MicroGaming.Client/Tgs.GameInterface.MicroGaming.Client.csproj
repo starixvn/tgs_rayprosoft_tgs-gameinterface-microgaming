@@ -1,4 +1,4 @@
-﻿<Project Sdk="Microsoft.NET.Sdk">
+<Project Sdk="Microsoft.NET.Sdk">
 
 	<PropertyGroup>
 		<TargetFramework>net8.0</TargetFramework>
@@ -7,7 +7,7 @@
 	</PropertyGroup>
 
 	<PropertyGroup>
-		<Version>1.0.2</Version>
+		<Version>8.0.1</Version>
 		<Authors>Raypro</Authors>
 		<PackageProjectUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-microgaming</PackageProjectUrl>
 		<RepositoryUrl>https://gitlab.com/rayprosoft/tgs-gameinterface-microgaming.git</RepositoryUrl>
@@ -20,8 +20,8 @@
 	</PropertyGroup>
 
 	<ItemGroup>
-		<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.63.0" />
-		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.63.0" />
+		<PackageReference Include="Grpc.AspNetCore.Server.Reflection" Version="2.66.0" />
+		<PackageReference Include="Grpc.Net.ClientFactory" Version="2.66.0" />
 		<PackageReference Include="PhoenixToolkits.NuGet.BuildTools" Version="0.0.3">
 			<IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
 			<PrivateAssets>all</PrivateAssets>
